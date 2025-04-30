@@ -16,3 +16,7 @@ LOADBALANCED_KAFKA_SERVICE_EXTERNAL_IP  kafka-controller-0.kafka-controller-head
 ## Run
 
 java -jar kafkaproducer-0.0.1-SNAPSHOT.jar
+
+## Open Swagger URL
+
+http://localhost:8080/swagger-ui/index.html
