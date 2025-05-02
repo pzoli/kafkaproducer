@@ -36,6 +36,9 @@ public class KafkaProducerConfig {
           ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, 
           StringSerializer.class);
         configProps.put(
+            ProducerConfig.PARTITIONER_CLASS_CONFIG,
+            "org.apache.kafka.clients.producer.internals.DefaultPartitioner");
+        configProps.put(
           SaslConfigs.SASL_MECHANISM,"PLAIN");
         configProps.put(
           CommonClientConfigs.SECURITY_PROTOCOL_CONFIG,
