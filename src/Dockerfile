@@ -13,7 +13,10 @@ RUN git clone https://github.com/pzoli/kafkaproducer.git
 RUN chown -R pzoli:users kafkaconsumer
 RUN chown -R pzoli:users kafkaproducer
 EXPOSE 22 8080
-
+ENV JAVA_HOME=/opt/java/openjdk
+RUN export JAVA_HOME
+ENV PATH=$JAVA_HOME/bin:$PATH
+RUN export PATH
 COPY start-commands.sh start-commands.sh
 RUN ["chmod", "+x", "start-commands.sh"]
 ENTRYPOINT ["./start-commands.sh"]
