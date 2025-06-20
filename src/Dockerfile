@@ -10,6 +10,8 @@ RUN su pzoli
 WORKDIR /home/pzoli
 RUN git clone https://github.com/pzoli/kafkaconsumer.git
 RUN git clone https://github.com/pzoli/kafkaproducer.git
+RUN chown -R pzoli:users kafkaconsumer
+RUN chown -R pzoli:users kafkaproducer
 EXPOSE 22 8080
 
 COPY start-commands.sh start-commands.sh
