@@ -3,20 +3,15 @@ LABEL authors="pzoli"
 RUN apt -y update && apt -y upgrade
 RUN useradd -m -g users -s /bin/bash pzoli
 RUN echo "pzoli:example"|chpasswd
-RUN apt -y install openssh-server
-RUN apt -y install nmap
-RUN apt install git
-RUN su pzoli
+RUN apt -y install openssh-server nmap nano git
 WORKDIR /home/pzoli
-RUN git clone https://github.com/pzoli/kafkaconsumer.git
-RUN git clone https://github.com/pzoli/kafkaproducer.git
-RUN chown -R pzoli:users kafkaconsumer
-RUN chown -R pzoli:users kafkaproducer
-EXPOSE 22 8080
-ENV JAVA_HOME=/opt/java/openjdk
-RUN export JAVA_HOME
-ENV PATH=$JAVA_HOME/bin:$PATH
-RUN export PATH
 COPY start-commands.sh start-commands.sh
 RUN ["chmod", "+x", "start-commands.sh"]
+USER pzoli
+RUN git clone https://github.com/pzoli/kafkaconsumer.git
+RUN git clone https://github.com/pzoli/kafkaproducer.git
+RUN echo "export JAVA_HOME=/opt/java/openjdk">>.profile
+RUN echo "export PATH=$JAVA_HOME/bin:$PATH">>.profile
+USER root
+EXPOSE 22 8080
 ENTRYPOINT ["./start-commands.sh"]
