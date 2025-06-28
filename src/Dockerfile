@@ -3,7 +3,7 @@ LABEL authors="pzoli"
 RUN apt -y update && apt -y upgrade
 RUN useradd -m -g users -s /bin/bash pzoli
 RUN echo "pzoli:example"|chpasswd
-RUN apt -y install openssh-server nmap nano git
+RUN apt -y install openssh-server nmap nano git iputils-ping
 WORKDIR /home/pzoli
 USER pzoli
 RUN mkdir development
