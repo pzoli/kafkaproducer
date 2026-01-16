@@ -38,6 +38,7 @@ public class KafkaProducerConfig {
         configProps.put(
             ProducerConfig.PARTITIONER_CLASS_CONFIG,
             "org.apache.kafka.clients.producer.internals.DefaultPartitioner");
+        ///*
         configProps.put(
           SaslConfigs.SASL_MECHANISM,"PLAIN");
         configProps.put(
@@ -46,6 +47,8 @@ public class KafkaProducerConfig {
         configProps.put(
           SaslConfigs.SASL_JAAS_CONFIG,
           KAFKA_JAAS_CONFIG);
+
+         //*/
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
