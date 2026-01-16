@@ -12,7 +12,8 @@ public class MessageProducer {
 	private KafkaTemplate<String, String> kafkaTemplate;
 
 	public void sendMessage(String msg) {
-    	kafkaTemplate.send("test",0, Instant.now().toEpochMilli(),"0", msg);
+    	//kafkaTemplate.send("test",0, Instant.now().toEpochMilli(),"0", msg);
+		kafkaTemplate.send("test",msg);
 	}
 
 }
